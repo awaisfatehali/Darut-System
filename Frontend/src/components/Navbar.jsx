@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { Backend_url } from "../Server";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.user);
@@ -11,7 +12,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/v2/user/logout", {
+      const res = await axios.get(`${Backend_url}v2/user/logout`, {
         withCredentials: true,
       });
       toast.success(res.data.message);

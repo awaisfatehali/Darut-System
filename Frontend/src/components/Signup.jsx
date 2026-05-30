@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Backend_url } from "../Server";
 
 
 export default function Signup() {
@@ -39,7 +40,7 @@ export default function Signup() {
     }
 
     try {
-      const res = await axios.post("http://localhost:8000/api/v2/user/create-user", form);
+      const res = await axios.post(`${Backend_url}/user/create-user`, form);
       toast.success(res.data.message);
       setStep("otp");
     } catch (error) {
@@ -53,7 +54,7 @@ export default function Signup() {
     if (!otp) return toast.error("Enter OTP");
 
     try {
-      const res = await axios.post("http://localhost:8000/api/v2/user/verify-otp", {
+    const res = await axios.post(`${Backend_url}/user/verify-otp`, {
         email: form.email,
         otp,
       });

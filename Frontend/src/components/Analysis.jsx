@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Backend_url } from "../Server";
 
 export default function DarutChat() {
   const [messages, setMessages] = useState([]);
@@ -38,7 +39,7 @@ export default function DarutChat() {
 
   const HandleLogout = async () => {
     try {
-      await axios.get("http://localhost:8000/api/v2/user/logout", {
+      await axios.get(`${Backend_url}/v2/user/logout`, {
         withCredentials: true,
       });
 
@@ -76,7 +77,7 @@ export default function DarutChat() {
     try {
       // MAIN ANALYSIS REQUEST
       const response = await axios.post(
-        "http://localhost:8000/api/v2/depression/analyze",
+        `${Backend_url}/v2/depression/analyze`,
         {
           text: userText,
         },
@@ -114,7 +115,7 @@ export default function DarutChat() {
         const lastTenEntries = savedChats.slice(-10);
 
         const adviceResponse = await axios.post(
-          "http://localhost:8000/api/v2/depression/five-message-analysis",
+          `${Backend_url}/depression/five-message-analysis`,
           {
             chats: lastTenEntries,
           },

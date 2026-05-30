@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Backend_url } from "../../Server";
 
 // load user
 export const loadUser = () => async (dispatch) => {
@@ -6,7 +7,7 @@ export const loadUser = () => async (dispatch) => {
     dispatch({
       type: "LoadUserRequest",
     });
-    const { data } = await axios.get("http://localhost:8000/api/v2/user/getuser", {
+    const { data } = await axios.get(`${Backend_url}/user/getuser`, {
       withCredentials: true,
     });
     dispatch({

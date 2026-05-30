@@ -5,6 +5,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Backend_url } from "../Server";
 
 export default function DarutLogin() {
   const [showPassword, setShowPassword] = useState(false);
@@ -33,7 +34,7 @@ export default function DarutLogin() {
     }
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/v2/user/forgot-password",
+        `${Backend_url}/v2/user/forgot-password`,
         { email: form.email }
       );
       if (res.data.success) {
@@ -55,7 +56,7 @@ export default function DarutLogin() {
     }
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/v2/user/verify-reset-otp",
+        `${Backend_url}/user/verify-reset-otp`,
         { email: form.email, otp }
       );
       if (res.data.success) {
@@ -77,7 +78,7 @@ export default function DarutLogin() {
     }
     try {
       const res = await axios.put(
-        "http://localhost:8000/api/v2/user/reset-password",
+        `${Backend_url}/user/reset-password`,
         { email: form.email,password:newPassword }
       );
       if (res.data.success) {
@@ -98,7 +99,7 @@ export default function DarutLogin() {
     }
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/v2/user/login-user",
+        `${Backend_url}/user/login-user`,
         form,
         { withCredentials: true }
       );
