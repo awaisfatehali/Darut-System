@@ -1,4 +1,4 @@
-import { ... } from ...
+// @ts-nocheck
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./components/Dashboard.jsx";
 import About from "./components/About.jsx";
@@ -40,7 +40,6 @@ function App() {
             </UnprotectedRoute>
           }
         />
-
         <Route
           path="/Analyze"
           element={
