@@ -1,3 +1,4 @@
+import { ... } from ...
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./components/Dashboard.jsx";
 import About from "./components/About.jsx";
