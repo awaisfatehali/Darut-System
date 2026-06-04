@@ -14,10 +14,11 @@ process.on("uncaughtException", (err) => {
 ConnectDatabase();
 
 // Start server
-const server = app.listen(process.env.PORT, () => {
-  console.log(`Server running on http://localhost:${process.env.PORT}`);
-});
+// const server = app.listen(process.env.PORT, () => {
+//   console.log(`Server running on http://localhost:${process.env.PORT}`);
+// });
 
+module.exports = app;
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (err) => {
   console.log(`Unhandled Rejection: ${err.message}`);

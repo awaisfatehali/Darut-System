@@ -39,7 +39,7 @@ export default function DarutChat() {
 
   const HandleLogout = async () => {
     try {
-      await axios.get(`${Backend_url}/v2/user/logout`, {
+      await axios.get(`${Backend_url}/user/logout`, {
         withCredentials: true,
       });
 
@@ -77,7 +77,7 @@ export default function DarutChat() {
     try {
       // MAIN ANALYSIS REQUEST
       const response = await axios.post(
-        `${Backend_url}/v2/depression/analyze`,
+        `${Backend_url}/depression/analyze`,
         {
           text: userText,
         },

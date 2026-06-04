@@ -1,5 +1,5 @@
 const axios = require("axios");
-
+require("dotenv").config({ path: __dirname + "../config/.env" });
 const DepressionAnalysis = async (extractedText) => {
   if (!extractedText || extractedText.trim().length < 10) {
     return {
@@ -10,7 +10,7 @@ const DepressionAnalysis = async (extractedText) => {
     };
   }
 
-  const mlResponse = await axios.post("http://127.0.0.1:8000/predict", {
+  const mlResponse = await axios.post(process.env.ML_SERVICE_URL + "/predict", {
     text: extractedText,
   });
 
